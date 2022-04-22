@@ -19,3 +19,16 @@ for (const link of linksDoMenu) {
 }
 
 /* ====================================== */
+/* mudar o header da página quando der scroll, ou seja, vai adicionar uma sombra no header. */
+const header = document.querySelector('#header')
+const navHeight = header.offsetHeight // deslocamento da altura
+
+window.addEventListener('scroll', function () {
+  if (window.scrollY >= navHeight) {
+    // scroll é maior ou igual a altura do header
+    header.classList.add('scroll')
+  } else {
+    // scroll menor que a altura do header
+    header.classList.remove('scroll')
+  }
+})
