@@ -20,10 +20,22 @@ for (const link of linksDoMenu) {
 
 /* ====================================== */
 /* mudar o header da página quando der scroll, ou seja, vai adicionar uma sombra no header. */
-const header = document.querySelector('#header')
-const navHeight = header.offsetHeight // deslocamento da altura
+// const header = document.querySelector('#header')
+// const navHeight = header.offsetHeight // deslocamento da altura
 
-window.addEventListener('scroll', function () {
+// window.addEventListener('scroll', function () {
+//   if (window.scrollY >= navHeight) {
+//     // scroll é maior ou igual a altura do header
+//     header.classList.add('scroll')
+//   } else {
+//     // scroll menor que a altura do header
+//     header.classList.remove('scroll')
+//   }
+// })
+// outr forma usando função
+function changeHeaderWhenScroll() {
+  const header = document.querySelector('#header')
+  const navHeight = header.offsetHeight // deslocamento da altura
   if (window.scrollY >= navHeight) {
     // scroll é maior ou igual a altura do header
     header.classList.add('scroll')
@@ -31,7 +43,7 @@ window.addEventListener('scroll', function () {
     // scroll menor que a altura do header
     header.classList.remove('scroll')
   }
-})
+}
 
 // Testimonials slider / carrossel / swiper
 const swiper = new Swiper('.swiper', {
@@ -56,17 +68,35 @@ scrollReveal.reveal(
   #about .image, #about .text,
   #services header, #services .card,
   #testimonials header, #testimonials .testimonials,
-  #contact .text, #contact .links
+  #contact .text, #contact .links,
+  footer .brand, footer .social
   `,
   { interval: 100 }
 )
 
 /* Botão voltar para o topo */
-const backToTopButton = document.querySelector('.back-to-top')
-window.addEventListener('scroll', function () {
+// const backToTopButton = document.querySelector('.back-to-top')
+// window.addEventListener('scroll', function () {
+//   if (window.scrollY >= 500) {
+//     backToTopButton.classList.add('show')
+//   } else {
+//     backToTopButton.classList.remove('show')
+//   }
+// })
+// outra forma utilizando função
+function backToTop() {
+  const backToTopButton = document.querySelector('.back-to-top')
+
   if (window.scrollY >= 500) {
     backToTopButton.classList.add('show')
   } else {
     backToTopButton.classList.remove('show')
   }
+}
+
+// eu tenho dois momentos em que eu uso o scroll, podemos criar funções para agrupar e diminuir o código.
+// Quando eu tiver scroll
+window.addEventListener('scroll', function () {
+  changeHeaderWhenScroll()
+  backToTop()
 })
